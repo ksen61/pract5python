@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/images/4274001.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;  
+        }
+        .list-group-item {
+            background-color: rgb(204, 205, 255) !important; 
+            color: white; 
+        }
+        .list-group-item:hover {
+            background-color: rgb(169, 171, 255) !important; 
+        }
+        .list-group-item:active {
+            background-color: rgb(204, 205, 255) !important; 
+            color: white; 
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center text-white p-4">Меню</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="list-group">
+        <a href="/createestate" class="list-group-item list-group-item-action">Создать недвижимость</a>
+        <a href="/createad" class="list-group-item list-group-item-action">Создать объявление</a>
+        <a href="/changeestatestatus" class="list-group-item list-group-item-action">Изменить статус недвижимости</a>
+        <a href="/changeadstatus" class="list-group-item list-group-item-action">Изменить статус объявления</a>
+        <a href="/buyestate" class="list-group-item list-group-item-action">Покупка недвижимости</a>
+        <a href="/withdraw" class="list-group-item list-group-item-action">Вывод средств</a>
+        <a href="/deposit" class="list-group-item list-group-item-action">Ввод средств</a>
+        <a href="/getinfo" class="list-group-item list-group-item-action">Получение информации</a>
+        <a href="{{ url_for('logout') }}" class="list-group-item list-group-item-action">Выход</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

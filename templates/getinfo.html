@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информация</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/images/4274001.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .info-title {
+            background-color: rgb(190, 107, 121) !important; 
+            color: white; 
+            padding: 10px; 
+            border-radius: 5px; /* Скругленные углы */
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .btn-back {
+            background-color: rgb(142, 196, 228); 
+        }
+        .btn-back:hover {
+            background-color: rgb(98, 181, 230); 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4 info-title">Информация о контракте</h2>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">Баланс контракта: {{ balance }}</p>
+            </div>
+        </div>
+        
+        <h2 class="mt-4 info-title">Недвижимость</h2>
+        <ul class="list-group">
+            {% for estate in estates %}
+                <li class="list-group-item">{{ estate }}</li>
+            {% endfor %}
+        </ul>
+        
+        <h2 class="mt-4 info-title">Объявления</h2>
+        <ul class="list-group">
+            {% for ad in ads %}
+                <li class="list-group-item">{{ ad }}</li>
+            {% endfor %}
+        </ul>
+        
+        <h2 class="mt-4 info-title">Баланс вашего аккаунта</h2>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">{{ account_balance }}</p>
+            </div>
+        </div>
+        <a href="{{ url_for('menu') }}" class="btn btn-back mt-4">Назад</a>
+    </div>
+</body>
+</html>

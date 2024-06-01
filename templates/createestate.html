@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/images/4274001.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .btn-create {
+            background-color: rgb(106, 214, 106); 
+        }
+        .btn-create:hover {
+            background-color: rgb(109, 172, 109);
+        }
+        .btn-back {
+            background-color: rgb(142, 196, 228); 
+        }
+        .btn-back:hover {
+            background-color: rgb(98, 181, 230); 
+        }
+    </style>
+</head>
+<body>
+    <h2 class="mt-4 text-white">Создать запись о недвижимости</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form id="create-property-form" method="POST">
+        <div class="form-group text-white">
+            <label for="size">Размер</label>
+            <input type="number" class="form-control" id="size" name="size" required>
+        </div>
+        <div class="form-group text-white">
+            <label for="address">Адрес</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+        </div>
+        <div class="form-group text-white">
+            <label for="estype">Тип недвижимости</label>
+            <select class="form-control" id="estype" name="estype">
+                <option value="0">Дом</option>
+                <option value="1">Квартира</option>
+                <option value="2">Лофт</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-create">Создать</button>
+        <a href="{{ url_for('menu') }}" class="btn btn-back">Назад</a>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .nav-link.active {
+            background-color: rgb(190, 107, 121) !important; 
+            color: white !important; 
+            border-radius: 5px;
+        }
+
+        .nav-item-home .nav-link {
+            font-size: 24px;
+        }
+
+        .nav-link {
+            color: rgb(108, 39, 172);
+            font-size: 18px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom">
+            <div>
+                <ul class="nav">
+                    <li class="nav-item nav-item-home"><a href="{{ url_for('index') }}" class="nav-link active" aria-current="page">Home</a></li>
+                </ul>
+            </div>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/login" class="nav-link">Авторизация</a></li>
+                <li class="nav-item"><a href="/register" class="nav-link">Регистрация</a></li>
+            </ul>
+        </header>
+    </div>
+
+    {% block content %}{% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

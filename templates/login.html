@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <style>
+        body {
+            background-image: url('/static/images/4274001.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .btn-info {
+            background-color: rgb(142, 196, 228); 
+        }
+        .btn-info:hover {
+            background-color: rgb(98, 181, 230); 
+        }
+        h2, label {
+            color: rgb(108, 39, 172);
+        }
+    </style>
+</head>
+<body>
+    {% extends "base.html" %}
+{% block content %}
+    <h2 class="mt-4">Авторизация</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <div class="form-group">
+            <label for="public_key">Публичный ключ</label>
+            <input type="text" class="form-control" id="public_key" name="public_key" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Пароль</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-info">Войти</button>
+    </form>
+{% endblock %}
+</body>
+</html>
